@@ -1,0 +1,96 @@
+.home{
+  .user{
+    display: flex;
+    //垂直居中对齐
+    align-items: center;
+    //内边框20像素距离
+    padding-bottom: 20px;
+    //外边框20px距离
+    margin-bottom: 20px;
+    //外边框线1px粗
+    border-bottom: 1px solid #cccccc;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right:40px
+    }
+    //&符号代表继承了父级都css属性，info的父级是user
+    &info{
+      .name{
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+      .access{
+        color: #999999;
+      }
+
+    }
+  }
+  .login-info{
+    p{
+      line-height: 28px;
+      font-size: 14px;
+      color: #999999;
+      span{
+        color: #666666;
+        margin-left: 60px;
+      }
+    }
+  }
+  .case{
+    //弹性布局，把块元素都转换成flex布局
+    display: flex;
+    //当前元素放不下时自动换行
+    flex-wrap: wrap;
+    //justify-content代表水平对其，选择space-between两端水平对齐
+    justify-content: space-between;
+    .el-card{
+      //设置卡片占元素都百分之33，三个卡片占满当前一行
+      width: 33%;
+      //底部间隔20像素
+      margin-bottom: 20px;
+      margin-top: 20px;
+      //样式穿透，可以修改el-card内部的样式
+      //::v-deep .el-card__body{
+      //  display: flex;
+      //
+      //}
+    }
+    .icon{
+      font-size: 30px;
+      width: 80px;
+      height: 80px;
+      //文字水平居中
+      text-align: center;
+      line-height: 80px;
+      color: #ffffff;
+    }
+    .detail{
+      display: flex;
+      margin-left: 15px;
+      //样式垂直分布
+      flex-direction: column;
+      justify-content: center;
+      .case-num{
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      .text{
+        font-size: 10px;
+        text-align: center;
+        color: #999999;
+      }
+    }
+
+  }
+  .graph{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    .el-card{
+      width: 48%;
+      margin-bottom: 20px;
+    }
+  }
+}
