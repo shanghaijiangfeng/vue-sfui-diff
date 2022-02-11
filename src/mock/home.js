@@ -39,12 +39,10 @@ export default {
     for (let i = 0; i < 7; i++) {
       List.push(
         Mock.mock({
-          vue: Mock.Random.float(100, 8000, 0, 2),
-          wechat: Mock.Random.float(100, 8000, 0, 2),
-          ES6: Mock.Random.float(100, 8000, 0, 2),
-          Redis: Mock.Random.float(100, 8000, 0, 2),
-          React: Mock.Random.float(100, 8000, 0, 2),
-          springboot: Mock.Random.float(100, 8000, 0, 2),
+          upc: Mock.Random.float(100, 8000, 0, 2),
+          npl: Mock.Random.float(100, 8000, 0, 2),
+          sdkupc: Mock.Random.float(100, 8000, 0, 2),
+          sdknpl: Mock.Random.float(100, 8000, 0, 2),
         })
       )
     }
@@ -79,7 +77,7 @@ export default {
           },
         ],
         // 柱状图
-        userData: [
+        caseWeekData: [
           {
             date: '周一',
             new: Mock.Random.integer(1, 100),
@@ -117,11 +115,11 @@ export default {
           },
         ],
         // 折线图
-        orderData: {
-          date: ['20191001', '20191002', '20191003', '20191004', '20191005', '20191006', '20191007'],
+        caseOrderData: {
+          date: ['20220101', '20220201', '20220301', '20220401', '20220501', '20220601', '20220701'],
           data: List,
         },
-        casedata: [
+        caseData: [
           {
             name: 'upc',
             todayCase: Mock.Random.integer(100, 200),

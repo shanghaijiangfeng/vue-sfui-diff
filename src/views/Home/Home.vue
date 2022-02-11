@@ -1,4 +1,4 @@
-<template xmlns:el-col="http://www.w3.org/1999/html">
+<template>
   <div>
     <el-row class="home" :gutter="20">
       <el-col :span="8">
@@ -33,17 +33,17 @@
           </el-card>
         </div>
         <el-card shadow="hover">
-          右中折线统计图
-          <div style="height: 280px"></div>
+          每月用例统计
+          <EChart style="height: 280px" :chart-data="EChartData.CaseOrder"></EChart>
         </el-card>
         <div class="graph">
           <el-card shadow="hover">
-            右下饼图统计1
-            <div style="height: 260px"></div>
+            每周用例走势
+            <EChart style="height: 260px" :chart-data="EChartData.CaseLeftOrder"></EChart>
           </el-card>
           <el-card shadow="hover"
             >右下饼图统计2
-            <div style="height: 260px"></div>
+            <EChart style="height: 260px"></EChart>
           </el-card>
         </div>
       </el-col>
@@ -52,8 +52,11 @@
 </template>
 
 <script>
+import EChart from '@/components/EChart'
 export default {
-  name: 'Home',
+  components: {
+    EChart,
+  },
   data() {
     return {
       userImg: require('../../assets/images/img.png'),
@@ -65,6 +68,19 @@ export default {
         failCase: '失败用例',
         Case: '总用例',
       },
+      EChartData: {
+        CaseOrder: {
+          xData: [],
+          series: [],
+        },
+        CaseLeftOrder: {
+          xData: [],
+          series: [],
+        },
+        CaseRightOrder: {
+          series: [],
+        },
+      },
     }
   },
   methods: {
@@ -72,7 +88,36 @@ export default {
       this.$http.get('/home/getData').then((res) => console.log(res.data))
       this.$http.get('/home/getData').then((res) => {
         res = res.data
-        this.tableData = res.data.casedata
+        this.tableData = res.data.caseData
+        const CaseOrder = res.data.caseOrderData
+        this.EChartData.CaseOrder.xData = CaseOrder.date
+        // 第一步取出series中的name部分——键名
+        let keyArray = Object.keys(CaseOrder.data[0])
+        // 第二步，循环添加数据
+        keyArray.forEach((key) => {
+          this.EChartData.CaseOrder.series.push({
+            name: key,
+            data: CaseOrder.data.map((item) => item[key]),
+            type: 'line',
+          })
+        })
+
+        // const CaseWeekData = res.data.caseWeekData
+        // this.EChartData.CaseLeftOrder.series = CaseWeekData.data
+        // 用户柱状图
+        this.EChartData.CaseLeftOrder.xData = res.data.caseWeekData.map((item) => item.date)
+        //传入x轴到对比数据
+        this.EChartData.CaseLeftOrder.series.push({
+          name: '总用例',
+          data: res.data.caseWeekData.map((item) => item.new),
+          type: 'bar',
+        })
+        this.EChartData.CaseLeftOrder.series.push({
+          name: '成功用例',
+          data: res.data.caseWeekData.map((item) => item.active),
+          type: 'bar',
+          barGap: 0,
+        })
       })
     },
     getCountData() {
@@ -86,9 +131,6 @@ export default {
   created() {
     this.gettableData()
     this.getCountData()
-  },
-  mounted() {
-    // this.$http.get('/home/getData').then((res) => console.log(res.data))
   },
 }
 </script>
