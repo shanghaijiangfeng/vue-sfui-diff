@@ -47,7 +47,7 @@ export default {
     },
   },
   // 计算属性，看是否有需要判断图表的类型等，如果有则通过计算属性来判断
-  //例如使用echarts必须传入options配置对象，则判断是哪种类型等图表再传入(echart先初始化，再传入对象)
+  //例如使用echarts必须传入options配置对象，则判断是哪种类型等图表再传入(Echart先初始化，再传入对象)
   computed: {
     options() {
       return this.isAxisChart ? this.axisOption : this.normalOption
@@ -58,6 +58,10 @@ export default {
     return {
       echart: null,
       axisOption: {
+        //图表位置偏移
+        grid: {
+          left: '20%',
+        },
         //图例显示
         legend: {
           textStyle: {
@@ -87,10 +91,15 @@ export default {
         series: [],
       },
       normalOption: {
+        legend: {
+          textStyle: {
+            color: '#333',
+          },
+        },
         tooltip: {
           trigger: 'item',
         },
-        color: ['#0f78f4', '#dd536b', '#9462e5', '#a6a6a6', '#e1bb22', '#39c362', '#3ed1cf'],
+        color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
         series: [],
       },
     }

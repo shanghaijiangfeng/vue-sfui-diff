@@ -42,8 +42,8 @@
             <EChart style="height: 260px" :chart-data="EChartData.CaseLeftOrder"></EChart>
           </el-card>
           <el-card shadow="hover"
-            >右下饼图统计2
-            <EChart style="height: 260px"></EChart>
+            >用例占比
+            <EChart style="height: 260px" :chart-data="EChartData.CaseRightOrder" :isAxisChart="false"></EChart>
           </el-card>
         </div>
       </el-col>
@@ -101,10 +101,7 @@ export default {
             type: 'line',
           })
         })
-
-        // const CaseWeekData = res.data.caseWeekData
-        // this.EChartData.CaseLeftOrder.series = CaseWeekData.data
-        // 用户柱状图
+        // 用例柱状图
         this.EChartData.CaseLeftOrder.xData = res.data.caseWeekData.map((item) => item.date)
         //传入x轴到对比数据
         this.EChartData.CaseLeftOrder.series.push({
@@ -117,6 +114,11 @@ export default {
           data: res.data.caseWeekData.map((item) => item.active),
           type: 'bar',
           barGap: 0,
+        })
+        // 用例饼图
+        this.EChartData.CaseRightOrder.series.push({
+          data: res.data.caseRightData,
+          type: 'pie',
         })
       })
     },

@@ -50,29 +50,21 @@ export default {
       code: 20000,
       data: {
         // 饼图
-        videoData: [
+        caseRightData: [
           {
-            name: 'springboot',
+            name: 'upc',
             value: Mock.Random.float(1000, 10000, 0, 2),
           },
           {
-            name: 'vue',
+            name: 'npl',
             value: Mock.Random.float(1000, 10000, 0, 2),
           },
           {
-            name: '小程序',
+            name: 'sdkupc',
             value: Mock.Random.float(1000, 10000, 0, 2),
           },
           {
-            name: 'ES6',
-            value: Mock.Random.float(1000, 10000, 0, 2),
-          },
-          {
-            name: 'Redis',
-            value: Mock.Random.float(1000, 10000, 0, 2),
-          },
-          {
-            name: 'React',
+            name: 'sdknpl',
             value: Mock.Random.float(1000, 10000, 0, 2),
           },
         ],
