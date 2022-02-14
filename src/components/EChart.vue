@@ -52,6 +52,10 @@ export default {
     options() {
       return this.isAxisChart ? this.axisOption : this.normalOption
     },
+
+    isCollapse() {
+      return this.$store.state.isCollapse
+    },
   },
 
   data() {
@@ -124,13 +128,35 @@ export default {
         this.normalOption.series = this.chartData.series
       }
     },
+    //图表大小依据浏览器大小变化，判断echart实例是否存在
+    //存在的话就调用resize方法改变大小，如果不存在就什么都不做
+    resizeChart() {
+      this.echart ? this.echart.resize() : ''
+    },
   },
+  //钩子函数监听事件
+  mounted() {
+    //监听resize事件，监听到就调用resizeChart函数
+    window.addEventListener('resize', this.resizeChart)
+  },
+  //钩子函数销毁事件
+  destroyed() {
+    //监听resize事件，监听到就调用resizeChart函数
+    window.removeEventListener('resize', this.resizeChart)
+  },
+
   watch: {
     chartData: {
       handler: function () {
         this.initChart()
       },
       deep: true,
+    },
+    //监听折叠状态，折叠后延时300ms调用改变图表大小的函数
+    isCollapse() {
+      setTimeout(() => {
+        this.resizeChart()
+      }, 300)
     },
   },
 }

@@ -1,5 +1,6 @@
 export default {
   state: {
+    //菜单是否折叠的状态
     isCollapse: false,
     menu: [],
     currentMenu: null,
