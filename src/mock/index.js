@@ -8,4 +8,4 @@ Mock.setup({
 // 首页相关  home
 Mock.mock(/\/home\/getData/, 'get', homeApi.getStatisticalData)
 // 获取首页右上的数量统计接口
-Mock.mock(/\/home\/getCountData/, 'get', homeApi.getCountData())
+// Mock.mock(/\/home\/getCountData/, 'get', homeApi.getCountData())

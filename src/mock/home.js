@@ -140,49 +140,49 @@ export default {
       },
     }
   },
-  getCountData: () => {
-    return {
-      code: 2000,
-      data: {
-        countData: [
-          {
-            name: '用例总数',
-            value: 1234,
-            icon: 'success',
-            color: '#2ec7c9',
-          },
-          {
-            name: '已执行用例',
-            value: 1210,
-            icon: 'finished',
-            color: '#ffb980',
-          },
-          {
-            name: '失败用例',
-            value: 29,
-            icon: 'error',
-            color: '#5ab1ef',
-          },
-          {
-            name: '忽略用例',
-            value: 38,
-            icon: 'close-notification',
-            color: '#2ec7c9',
-          },
-          {
-            name: '本月执行用例',
-            value: 122200,
-            icon: 'star-on',
-            color: '#ffb980',
-          },
-          {
-            name: '本月失败用例',
-            value: 129,
-            icon: 's-release',
-            color: '#5ab1ef',
-          },
-        ],
-      },
-    }
-  },
+  // getCountData: () => {
+  //   return {
+  //     code: 2000,
+  //     data: {
+  //       countData: [
+  //         {
+  //           name: '用例总数',
+  //           value: 1234,
+  //           icon: 'success',
+  //           color: '#2ec7c9',
+  //         },
+  //         {
+  //           name: '已执行用例',
+  //           value: 1210,
+  //           icon: 'finished',
+  //           color: '#ffb980',
+  //         },
+  //         {
+  //           name: '失败用例',
+  //           value: 29,
+  //           icon: 'error',
+  //           color: '#5ab1ef',
+  //         },
+  //         {
+  //           name: '忽略用例',
+  //           value: 38,
+  //           icon: 'close-notification',
+  //           color: '#2ec7c9',
+  //         },
+  //         {
+  //           name: '本月执行用例',
+  //           value: 122200,
+  //           icon: 'star-on',
+  //           color: '#ffb980',
+  //         },
+  //         {
+  //           name: '本月失败用例',
+  //           value: 129,
+  //           icon: 's-release',
+  //           color: '#5ab1ef',
+  //         },
+  //       ],
+  //     },
+  //   }
+  // },
 }
