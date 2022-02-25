@@ -2,7 +2,12 @@ module.exports = {
   devServer: {
     port: 8881,
     open: true,
-    // proxy:{}
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
   },
   css: {
     loaderOptions: {

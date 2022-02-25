@@ -123,8 +123,8 @@ export default {
       })
     },
     getCountData() {
-      this.$http.get('http://localhost:8080/api/home/getCountData').then((res) => console.log(res.data))
-      this.$http.get('http://localhost:8080/api/home/getCountData').then((res) => {
+      this.$http.get('/api/home/getCountData').then((res) => console.log(res.data))
+      this.$http.get('/api/home/getCountData').then((res) => {
         res = res.data
         this.countData = res.data.countData
       })
