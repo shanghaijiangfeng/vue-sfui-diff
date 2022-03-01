@@ -79,12 +79,17 @@ export default {
           label: '任务Id',
         },
         {
-          prop: 'statusLabel',
+          prop: 'passNumber',
           label: '执行结果',
         },
         {
           prop: 'birth',
           label: '日期',
+        },
+        {
+          prop: 'caseReport',
+          label: '地址',
+          width: 300,
         },
         {
           prop: 'caseReport',
@@ -113,8 +118,9 @@ export default {
       this.config.loading = true
       // 搜索时，页码需要设置为1，才能正确返回数据，因为数据是从第一页开始返回的
       name ? (this.config.page = 1) : ''
+      this.$http.get('/api/case/list').then((res) => console.log(res.data))
       this.$http
-        .get('/user/getUser', {
+        .get('/api/case/list', {
           params: {
             page: this.config.page,
             name,

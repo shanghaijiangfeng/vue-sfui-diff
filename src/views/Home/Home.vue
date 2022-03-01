@@ -33,7 +33,7 @@
           </el-card>
         </div>
         <el-card shadow="hover">
-          每月用例统计
+          最近七次用例统计
           <EChart style="height: 280px" :chart-data="EChartData.CaseOrder"></EChart>
         </el-card>
         <div class="graph">
@@ -66,7 +66,7 @@ export default {
         name: '服务',
         todayCase: '成功用例',
         failCase: '失败用例',
-        Case: '总用例',
+        ignoreCase: '忽略用例',
       },
       EChartData: {
         CaseOrder: {
