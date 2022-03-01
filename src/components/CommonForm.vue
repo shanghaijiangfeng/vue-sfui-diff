@@ -15,6 +15,7 @@
 <script>
 export default {
   name: 'CommonForm',
+  //从父组件接受表单的属性，类型
   props: {
     // 表单是否是横向的，true是横向的，默认是false
     inline: Boolean,

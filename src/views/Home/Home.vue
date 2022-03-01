@@ -85,14 +85,15 @@ export default {
   },
   methods: {
     gettableData() {
-      this.$http.get('/home/getData').then((res) => console.log(res.data))
-      this.$http.get('/home/getData').then((res) => {
+      this.$http.get('/api/home/getData').then((res) => console.log(res.data))
+      this.$http.get('/api/home/getData').then((res) => {
         res = res.data
         this.tableData = res.data.caseData
         const CaseOrder = res.data.caseOrderData
         this.EChartData.CaseOrder.xData = CaseOrder.date
         // 第一步取出series中的name部分——键名
         let keyArray = Object.keys(CaseOrder.data[0])
+        console.log(keyArray)
         // 第二步，循环添加数据
         keyArray.forEach((key) => {
           this.EChartData.CaseOrder.series.push({

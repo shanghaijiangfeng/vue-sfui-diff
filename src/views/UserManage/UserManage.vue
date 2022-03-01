@@ -1,5 +1,12 @@
 <template>
   <div class="manage">
+    <el-dialog :title="operateType === 'add' ? '新增用户' : '更新用户'" :visible.sync="isShow">
+      <common-form :formLabel="operateFormLabel" :form="operateForm" ref="form"></common-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="isShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirm">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="manage-header">
       <el-button type="primary">+ 新增</el-button>
       <common-form inline :form-label="formLabel" :form="searchFrom">
@@ -18,26 +25,69 @@ export default {
   components: { CommonTable, CommonForm },
   data() {
     return {
+      operateType: 'add',
+      operateForm: {
+        servername: '',
+        taskId: '',
+        status: '',
+        date: '',
+        sex: '',
+      },
+      operateFormLabel: [
+        {
+          model: 'servername',
+          label: '服务',
+        },
+        {
+          model: 'taskId',
+          label: '任务id',
+        },
+        {
+          model: 'status',
+          label: '执行结果',
+          type: 'select',
+          opts: [
+            {
+              label: '成功',
+              value: 1,
+            },
+            {
+              label: '失败',
+              value: 0,
+            },
+          ],
+        },
+        {
+          model: 'date',
+          label: '运行',
+          type: 'date',
+        },
+        {
+          model: 'caseReport',
+          label: '地址',
+        },
+      ],
+      isShow: false,
       tableData: [],
       tableLabel: [
         {
-          prop: 'name',
-          label: '姓名',
+          prop: 'servername',
+          label: '服务名称',
         },
         {
-          prop: 'age',
-          label: '年龄',
+          prop: 'taskId',
+          label: '任务Id',
         },
         {
-          prop: 'sexLabel',
-          label: '性别',
+          prop: 'statusLabel',
+          label: '执行结果',
         },
         {
           prop: 'birth',
           label: '日期',
         },
         {
-          prop: 'addr',
+          prop: 'caseReport',
           label: '地址',
           width: 300,
         },
@@ -71,8 +121,9 @@ export default {
           },
         })
         .then((res) => {
+          console.log(res)
           this.tableData = res.data.list.map((item) => {
-            item.sexLabel = item.sex === 0 ? '女' : '男'
+            item.statusLabel = item.sex === 0 ? '失败' : '成功'
             return item
           })
           this.config.total = res.data.count
@@ -80,7 +131,24 @@ export default {
         })
     },
     editUser(row) {
-      console.log(row)
+      this.operateType = 'edit'
+      this.isShow = true
+      this.operateForm = row
+    },
+    confirm() {
+      if (this.operateType === 'edit') {
+        this.$http.post('/api/user/edit', this.operateForm).then((res) => {
+          console.log(res.data)
+          this.isShow = false
+          this.getList()
+        })
+      } else {
+        this.$http.post('/api/user/add', this.operateForm).then((res) => {
+          console.log(res.data)
+          this.isShow = false
+          this.getList()
+        })
+      }
     },
   },
 

@@ -114,9 +114,9 @@ export default {
         caseData: [
           {
             name: 'upc',
-            todayCase: Mock.Random.integer(100, 200),
-            failCase: Mock.Random.integer(100, 200),
-            Case: Mock.Random.integer(100, 200),
+            todayCase: 1,
+            failCase: 2,
+            ignoreCase: 3,
           },
           {
             name: 'npl',

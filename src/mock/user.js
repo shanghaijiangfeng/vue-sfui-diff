@@ -16,11 +16,11 @@ for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: Mock.Random.guid(),
-      name: Mock.Random.cname(),
-      addr: Mock.mock('@county(true)'),
-      'age|18-60': 1,
+      servername: 'npl',
+      caseReport: Mock.mock('@county(true)'),
+      'taskId|18-60': 1,
       birth: Mock.Random.date(),
-      sex: Mock.Random.integer(0, 1),
+      statusLabel: Mock.Random.integer(0, 1),
     })
   )
 }
@@ -56,11 +56,11 @@ export default {
     console.log(JSON.parse(config.body))
     List.unshift({
       id: Mock.Random.guid(),
-      name: name,
-      addr: addr,
-      age: age,
+      servername: name,
+      caseReport: addr,
+      taskId: age,
       birth: birth,
-      sex: sex,
+      statusLabel: sex,
     })
     return {
       code: 20000,
