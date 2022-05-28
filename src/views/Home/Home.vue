@@ -33,7 +33,7 @@
           </el-card>
         </div>
         <el-card shadow="hover">
-          最近七次用例统计
+          最近十次用例统计
           <EChart style="height: 280px" :chart-data="EChartData.CaseOrder"></EChart>
         </el-card>
         <div class="graph">

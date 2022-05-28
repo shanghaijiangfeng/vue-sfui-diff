@@ -6,7 +6,7 @@
           <span style="margin-left: 10px">{{ (config.page - 1) * 20 + scope.$index + 1 }}</span>
         </template>
       </el-table-column>
-      <el-table-column show-overflow-tooltip v-for="item in tableLabel" :key="item.prop" :label="item.label" :width="item.width ? item.width : 150">
+      <el-table-column style="width: auto" show-overflow-tooltip v-for="item in tableLabel" :key="item.prop" :label="item.label">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row[item.prop] }}</span>
         </template>

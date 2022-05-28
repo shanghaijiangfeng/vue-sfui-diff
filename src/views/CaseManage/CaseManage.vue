@@ -1,6 +1,6 @@
 <template>
   <div class="manage">
-    <el-dialog :title="operateType === 'add' ? '新增用户' : '更新用户'" :visible.sync="isShow">
+    <el-dialog :title="operateType === 'see' ? '查看报告' : '更新用例'" :visible.sync="isShow">
       <common-form :formLabel="operateFormLabel" :form="operateForm" ref="form"></common-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="isShow = false">取 消</el-button>
@@ -13,7 +13,7 @@
         <el-button type="primary">搜索</el-button>
       </common-form>
     </div>
-    <CommonTable :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList()"></CommonTable>
+    <CommonTable :tableData="tableData" :tableLabel="tableLabel" :config="config" @changePage="getList()" @edit="editUser"></CommonTable>
   </div>
 </template>
 
@@ -24,6 +24,44 @@ export default {
   components: { CommonTable, CommonForm },
   data() {
     return {
+      // 弹出框操作类型
+      operateType: 'see',
+      // 弹出框操作内容
+      operateForm: {
+        servername: '',
+        taskId: '',
+        passNumber: '',
+        failNumber: '',
+        ignoreNumber: '',
+        birthd: '',
+      },
+      isShow: false,
+      operateFormLabel: [
+        {
+          model: 'servername',
+          label: '服务名称',
+        },
+        {
+          model: 'taskId',
+          label: '任务id',
+        },
+        {
+          model: 'passNumber',
+          label: '通过用例',
+        },
+        {
+          model: 'passNumber',
+          label: '失败用例',
+        },
+        {
+          model: 'ignoreNumber',
+          label: '忽略用例',
+        },
+        {
+          model: 'birthd',
+          label: '日期',
+        },
+      ],
       searchFrom: {
         keyword: '',
       },
@@ -71,6 +109,12 @@ export default {
           this.config.total = res.data.data.count
           this.config.loading = false
         })
+    },
+    editUser(row) {
+      console.log(row)
+      this.operateType = 'see'
+      this.isShow = true
+      this.operateForm = row
     },
   },
   created() {
