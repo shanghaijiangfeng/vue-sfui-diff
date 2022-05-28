@@ -34,6 +34,7 @@ export default {
         failNumber: '',
         ignoreNumber: '',
         birthd: '',
+        resulturl: '',
       },
       isShow: false,
       operateFormLabel: [
@@ -61,6 +62,10 @@ export default {
           model: 'birthd',
           label: '日期',
         },
+        {
+          model: 'resulturl',
+          label: '测试报告地址',
+        },
       ],
       searchFrom: {
         keyword: '',
@@ -78,6 +83,7 @@ export default {
         { prop: 'failNumber', label: '失败用例' },
         { prop: 'ignoreNumber', label: '忽略用例' },
         { prop: 'birthd', label: '日期' },
+        { prop: 'resulturl', label: '测试报告地址' },
       ],
       tableData: [],
       config: {
@@ -113,6 +119,11 @@ export default {
     editUser(row) {
       console.log(row)
       this.operateType = 'see'
+      this.isShow = true
+      this.operateForm = row
+    },
+    url(row) {
+      console.log(row)
       this.isShow = true
       this.operateForm = row
     },
