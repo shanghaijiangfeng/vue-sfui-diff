@@ -56,10 +56,22 @@ export default {
           icon: 'video-play',
         },
         {
-          path: '/user',
-          name: 'user',
-          label: '用户管理',
+          label: '接口测试',
           icon: 'user',
+          children: [
+            {
+              path: '/user1',
+              name: 'user1',
+              label: '接口管理',
+              icon: 'setting',
+            },
+            {
+              path: '/user2',
+              name: 'user2',
+              label: '接口执行',
+              icon: 'setting',
+            },
+          ],
         },
         {
           label: '其他',

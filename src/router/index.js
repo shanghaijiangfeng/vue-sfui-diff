@@ -19,9 +19,14 @@ const routes = [
         component: () => import('@/views/CaseManage/CaseManage'),
       },
       {
-        path: '/user',
-        name: 'user',
-        component: () => import('@/views/UserManage/UserManage'),
+        path: '/user1',
+        name: 'user1',
+        component: () => import('@/views/UserManage/UserManage1'),
+      },
+      {
+        path: '/user2',
+        name: 'user2',
+        component: () => import('@/views/UserManage/UserManage2'),
       },
       {
         path: '/page1',

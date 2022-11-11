@@ -7,6 +7,14 @@ module.exports = {
         target: 'http://localhost:8080',
         changeOrigin: true,
       },
+      '/testcase': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+      '/guess': {
+        target: 'http://192.168.96.175:8080',
+        changeOrigin: true,
+      },
     },
   },
   css: {

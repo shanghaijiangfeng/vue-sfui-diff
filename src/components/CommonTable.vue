@@ -14,7 +14,7 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">查看</el-button>
-          <!--          <el-button size="mini" @click="handleurl(scope.row.resulturl)" type="text">报告地址</el-button>-->
+          <!--          <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>-->
         </template>
       </el-table-column>
     </el-table>
@@ -35,9 +35,7 @@ export default {
     handleEdit(row) {
       this.$emit('edit', row)
     },
-    handleurl(row) {
-      this.$emit('edit', row)
-    },
+    handleDelete() {},
     changePage(page) {
       //监听组件的页码信息，传递给父组件
       this.$emit('changePage', page)
