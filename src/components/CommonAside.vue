@@ -74,19 +74,37 @@ export default {
           ],
         },
         {
-          label: '其他',
+          label: '正式环境猜歌后台',
           icon: 'user',
           children: [
             {
               path: '/page1',
               name: 'page1',
-              label: '页面1',
+              label: '单题正确率查询',
               icon: 'setting',
             },
             {
               path: '/page2',
               name: 'page2',
               label: '页面2',
+              icon: 'setting',
+            },
+          ],
+        },
+        {
+          label: '正式环境云音花园后台',
+          icon: 'user',
+          children: [
+            {
+              path: '/flower/page1',
+              name: 'flower1',
+              label: '植物数据配置plant表',
+              icon: 'setting',
+            },
+            {
+              path: '/flower/page2',
+              name: 'flower2',
+              label: '歌曲标签查询',
               icon: 'setting',
             },
           ],

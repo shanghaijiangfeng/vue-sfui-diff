@@ -53,6 +53,7 @@ export default {
     getCountData() {
       this.$http.get('/guess/question/statisticaldata', { params: { id: this.formInline.questionid } }).then((res) => {
         this.guessdata.data = res.data.data
+        console.log(res.data.data)
         var nval = this.guessdata.data.aaccuracy
         this.guessdata.data.aaccuracy = Math.round(nval * 10000) / 100 + '%'
       })

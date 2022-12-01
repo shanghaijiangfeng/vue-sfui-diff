@@ -3,12 +3,16 @@ module.exports = {
     port: 8881,
     open: true,
     proxy: {
+      '/flower': {
+        target: 'http://192.168.96.175:8080',
+        changeOrigin: true,
+      },
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://192.168.96.175:8080',
         changeOrigin: true,
       },
       '/testcase': {
-        target: 'http://localhost:8080',
+        target: 'http://192.168.96.175:8080',
         changeOrigin: true,
       },
       '/guess': {

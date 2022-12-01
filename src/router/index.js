@@ -31,12 +31,22 @@ const routes = [
       {
         path: '/page1',
         name: 'page1',
-        component: () => import('@/views/Other/PageOne'),
+        component: () => import('@/views/guess/PageOne'),
       },
       {
         path: '/page2',
         name: 'page2',
-        component: () => import('@/views/Other/PageTwo'),
+        component: () => import('@/views/guess/PageTwo'),
+      },
+      {
+        path: '/flower/page1',
+        name: 'flower1',
+        component: () => import('@/views/flower/PageOne'),
+      },
+      {
+        path: '/flower/page2',
+        name: 'flower2',
+        component: () => import('@/views/flower/PageTwo'),
       },
     ],
   },
